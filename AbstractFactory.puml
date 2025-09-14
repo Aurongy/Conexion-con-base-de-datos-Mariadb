@@ -1,0 +1,49 @@
+@startuml
+interface FabricaGUI {
+    Boton crearBoton()
+    Checkbox crearCheckbox()
+}
+
+interface Boton {
+    +pintar(): void
+}
+
+interface Checkbox {
+    +pintar(): void
+}
+
+class FabricaWindows implements FabricaGUI {
+    +crearBoton(): Boton
+    +crearCheckbox(): Checkbox
+}
+
+class FabricaMac implements FabricaGUI {
+    +crearBoton(): Boton
+    +crearCheckbox(): Checkbox
+}
+
+class BotonWindows implements Boton {
+    +pintar(): void
+}
+
+class CheckboxWindows implements Checkbox {
+    +pintar(): void
+}
+
+class BotonMac implements Boton {
+    +pintar(): void
+}
+
+class CheckboxMac implements Checkbox {
+    +pintar(): void
+}
+
+FabricaGUI <|.. FabricaWindows
+FabricaGUI <|.. FabricaMac
+
+Boton <|.. BotonWindows
+Boton <|.. BotonMac
+
+Checkbox <|.. CheckboxWindows
+Checkbox <|.. CheckboxMac
+@enduml
